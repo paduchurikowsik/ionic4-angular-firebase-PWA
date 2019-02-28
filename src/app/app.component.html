@@ -1,0 +1,58 @@
+<!-- Side Menu on smaller devices -->
+<!-- hanburger icon is shown on the smaller screens or mobile devices -->
+<ion-app>
+  <ion-menu side="end">
+    <ion-header no-border>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item type="button" button=true lines="full" [routerDirection]="'root'" [routerLink]="['/']">
+            <ion-label>
+              Home
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false" *ngIf="afAuth.auth.currentUser">
+          <ion-item type="button" button=true lines="full" [routerDirection]="'root'" [routerLink]="['/protected']">
+            <ion-label>
+              Protected Page
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false" *ngIf="!afAuth.auth.currentUser">
+          <ion-item (click)="presentLoginPopover()" type="button" button=true lines="full">
+            <ion-label>
+              Login
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false" *ngIf="!afAuth.auth.currentUser">
+          <ion-item (click)="presentSignUpPopover()" type="button" button=true lines="full">
+            <ion-label>
+              Sign Up
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false" *ngIf="afAuth.auth.currentUser">
+          <ion-item type="button" button=true lines="full">
+            <ion-label>
+              {{ afAuth.auth.currentUser.email }}
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false" *ngIf="afAuth.auth.currentUser" (click)="logout()">
+          <ion-item type="button" button=true lines="full">
+            <ion-label>
+              Logout
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>

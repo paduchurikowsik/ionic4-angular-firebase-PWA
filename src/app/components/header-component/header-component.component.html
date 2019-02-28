@@ -1,0 +1,34 @@
+<ion-header no-border>
+  <ion-grid fixed>
+    <ion-toolbar>
+      <ion-title>
+        <!-- title passed through the conponet input decorator -->
+        {{title}}
+      </ion-title>
+
+      <ion-buttons slot="secondary" class="hidden-xs hidden-sm">
+        <ion-button fill="clear" [routerDirection]="'root'" [routerLink]="['/']">Home</ion-button>
+      </ion-buttons>
+
+      <ion-buttons *ngIf="afAuth.auth.currentUser" slot="primary" class="hidden-xs hidden-sm">
+        <ion-button fill="clear" [routerDirection]="'root'" [routerLink]="['/protected']">Protected Page</ion-button>
+        <ion-button fill="clear">{{ afAuth.auth.currentUser.email }}</ion-button>
+        <ion-button fill="clear" (click)="logout()">Logout</ion-button>
+      </ion-buttons>
+
+      <ion-buttons *ngIf="!afAuth.auth.currentUser" slot="primary" mode="md" class="hidden-xs hidden-sm">
+        <ion-button fill="clear" (click)="presentSignUpPopover($event)">Sign Up</ion-button>
+        <ion-button fill="clear" (click)="presentLoginPopover($event)">Login</ion-button>
+
+        <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
+      </ion-buttons>
+
+      <ion-buttons slot="primary" class="hidden-md hidden-lg hidden-xl">
+        <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
+
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-grid>
+</ion-header>

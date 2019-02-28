@@ -1,0 +1,32 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>SignUP</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="medium" (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="none">
+    <form [formGroup]="registerForm">
+
+      <ion-item mode="ios">
+        <ion-label mode="ios" position="stacked">Full Name</ion-label>
+        <ion-input mode="ios" type="text" formControlName="fullname" placeholder="Full name"></ion-input>
+      </ion-item>
+      <ion-item mode="ios">
+        <ion-label mode="ios" position="stacked">Email</ion-label>
+        <ion-input mode="ios" type="email" formControlName="email" placeholder="Email address"></ion-input>
+      </ion-item>
+      <ion-item mode="ios">
+        <ion-label mode="ios" position="stacked">Password</ion-label>
+        <ion-input mode="ios" type="password" formControlName="password" placeholder="password"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="register()">Sign Up</ion-button>
+
+    </form>
+  </ion-list>
+</ion-content>

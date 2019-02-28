@@ -1,0 +1,27 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="medium" (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="none">
+    <form [formGroup]="loginForm">
+      <ion-item mode="ios">
+        <ion-label mode="ios" position="stacked">Email Label</ion-label>
+        <ion-input mode="ios" type="email" formControlName="email" placeholder="Email address"></ion-input>
+      </ion-item>
+      <ion-item mode="ios">
+        <ion-label mode="ios" position="stacked">Stacked Label</ion-label>
+        <ion-input mode="ios" type="password" formControlName="password" placeholder="password"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="login()">login</ion-button>
+
+    </form>
+  </ion-list>
+</ion-content>
