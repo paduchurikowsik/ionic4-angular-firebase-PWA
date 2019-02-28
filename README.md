@@ -1,5 +1,13 @@
 # ionic4-angular-firebase-PWA
 A PWA (Progressive Web App) with Ionic 4, Anuglar, firebase
+This project uses @angular/fire for all firebase functions
+
+The project includes the following
+- Home Page ( public or anyone can access)
+- Login
+- SignUp
+- Protected Page ( only users who authenticated can access)
+- A simple SEO service that sets the Meta tags for each Page, like title, description, etc.
 
 To use first clone the project to your wanted location or dir from your terminal or console
 ```
