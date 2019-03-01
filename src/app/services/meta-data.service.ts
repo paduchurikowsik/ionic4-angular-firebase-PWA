@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class MetaDataService {
   private appTitle: 'Publication PWA';
   private appDescription: 'A place where you can find wide range of Novels and Stories';
 
-  constructor(private meta: Meta, private title: Title) { }
+  constructor(@Inject(DOCUMENT) private doc, private meta: Meta, private title: Title) { }
 
   public setMetaData(config) {
     const description = config.description || this.appDescription;
@@ -26,6 +27,7 @@ export class MetaDataService {
       { name: 'description', content: description },
       { name: 'theme-color', content: this.appColor },
       { name: 'twitter:card', content: 'summary' },
+      { name: 'twitter:url', content: config.url },
       { name: 'twitter:image', content: image },
       { name: 'twitter:title', content: title },
       { name: 'twitter:description', content: description },
@@ -36,8 +38,18 @@ export class MetaDataService {
       { property: 'og:title', content: title },
       { property: 'og:description', content: description },
       { property: 'og:image', content: image },
+      { property: 'og:url', content: config.url },
+      { property: 'og:type', content: "website" },
     ];
 
     tags.forEach(tag => this.meta.updateTag(tag));
+  }
+
+  createLinkForCanonicalURL() {
+    let link: HTMLLinkElement = this.doc.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    this.doc.head.appendChild(link);
+    link.setAttribute('href', this.doc.URL);
+    console.log(link);
   }
 }

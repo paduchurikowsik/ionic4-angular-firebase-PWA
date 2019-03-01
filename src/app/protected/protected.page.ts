@@ -23,8 +23,10 @@ export class ProtectedPage implements OnInit {
     this.metaDataService.setMetaData({
       title: name,
       description: description,
-      image: image
+      image: image,
+      url: window.location.href
     });
+    this.metaDataService.createLinkForCanonicalURL();
   }
 
 }
