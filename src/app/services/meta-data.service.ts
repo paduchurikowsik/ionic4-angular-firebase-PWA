@@ -18,7 +18,7 @@ export class MetaDataService {
 
   public setMetaData(config) {
     const description = config.description || this.appDescription;
-    const image = config.image || this.appImage;
+    const image = (config.image != "" || config.image != null) ? config.image : this.appImage;
     const title = config.title ? `${config.title}` : this.appTitle;
     this.title.setTitle(title);
 

@@ -10,7 +10,7 @@ export class ProtectedPage implements OnInit {
 
   constructor(public metaDataService: MetaDataService) {
     // Pass the title, description of the page
-    this.metaData("Protected Page", "Protected Page Description");
+    this.metaData("Protected Page", "Protected Page Description", "");
   }
 
   ngOnInit() {
@@ -19,10 +19,11 @@ export class ProtectedPage implements OnInit {
 
   // Function to Set Meta Data for the Page. 
   // Helpful for SEO
-  metaData(name: string, description: string) {
+  metaData(name: string, description: string, image: string) {
     this.metaDataService.setMetaData({
       title: name,
-      description: description
+      description: description,
+      image: image
     });
   }
 
